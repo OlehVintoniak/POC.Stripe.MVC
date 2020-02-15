@@ -1,0 +1,39 @@
+﻿@using Stripe
+@model List<Charge>
+@{
+    ViewData["Title"] = "ChargesHistory";
+}
+
+
+<h1>ChargesHistory</h1>
+
+<div class="container">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Charge ID</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Currency</th>
+                    <th scope="col">Card Brand</th>
+                    <th scope="col">Last4</th>
+                    <th scope="col">Receipt URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var charge in Model)
+                {
+                    <tr>
+                        <td scope="row">@charge.Id</td>
+                        <td>@(charge.Amount / 100)</td>
+                        <td>@charge.Currency</td>
+                        <td>@charge.PaymentMethodDetails.Card.Brand</td>
+                        <td>@charge.PaymentMethodDetails.Card.Last4</td>
+                        <td>@charge.ReceiptUrl</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

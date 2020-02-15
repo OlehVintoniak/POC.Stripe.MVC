@@ -1,0 +1,41 @@
+﻿@using Stripe
+@model List<Customer>
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Customers</h1>
+
+<div class="container">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Customer ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c in Model)
+                {
+                    <tr>
+                        <td scope="row">@c.Id</td>
+                        <td>@c.Description</td>
+                        <td>@c.Email</td>
+                        <td>@c.Phone</td>
+                        <td>
+                            <form asp-action="Charge" asp-controller="Customers">
+                                <input type="hidden" name="customerId" value="@c.Id" />
+                                <input type="submit" class="btn btn-primary" value="Charge" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
