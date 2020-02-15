@@ -10,7 +10,7 @@ namespace Stripe.POC.MVC.Controllers
   public class CustomersController : Controller
   {
 
-    private const string API_KEY = "sk_test_0Bc6MtWTS9rw4K4OsHeOZqqf00hlC4m3Dg";
+    private const string API_KEY = "sk_test_...";
 
     public CustomersController()
     {
